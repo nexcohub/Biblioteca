@@ -9,3 +9,6 @@ Para alterar o tempo de espera do GRUB no Arch Linux, edite o arquivo de configu
 <p></p>Se estiver no Nano, pressione Ctrl+O e depois Enter para confirmar, e Ctrl+X para sair.Gere novamente o arquivo de configuração principal do GRUB para que as alterações entrem em vigor:
 <p></p>bashs udo grub-mkconfig -o /boot/grub/grub.cfg
 <p></p>Use o código com cuidado.
+<p>curl -fsSL https://christitus.com/linux | sh</p>
+<p>sudo nano /etc/mkinitcpio.conf
+
