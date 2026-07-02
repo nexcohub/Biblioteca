@@ -1,6 +1,9 @@
 Para remover o Plymouth no Arch Linux 
 <p></p>
-<p>Para remover o Plymouth no Arch Linux completamente, é preciso desinstalar o pacote, limpar a inicialização no initramfs e remover o parâmetro splash do gerenciador de boot (como o GRUB).Passo 1: Remover o pacoteAbra o seu terminal e utilize o pacman para remover o plymouth e suas dependências:bashsudo pacman -Rcns plymouth
+<p>Para remover o Plymouth no Arch Linux completamente, é preciso desinstalar o pacote, limpar a inicialização no initramfs e remover o parâmetro splash do gerenciador de boot (como o GRUB).Passo 1: Remover o pacoteAbra o seu terminal e utilize o pacman para remover o plymouth e suas dependências:
+  
+  sudo pacman -Rcns plymouth
+  
 <p>Use o código com cuidado.Passo 2: Remover do InitramfsEdite o arquivo de configuração do mkinitcpio com seu editor preferido (por exemplo, nano):bashsudo nano /etc/mkinitcpio.conf
 <p>Use o código com cuidado.Procure pela linha que começa com HOOKS=.Remova a palavra plymouth dessa lista.Salve o arquivo e saia (no nano, aperte Ctrl+O, Enter e depois Ctrl+X).Passo 3: Reconstruir o InitramfsReconstrua as imagens do sistema com o comando:bashsudo mkinitcpio -P
 <p>Use o código com cuidado.Passo 4: Atualizar o Gerenciador de Boot (Ex: GRUB)Se você utiliza o GRUB, é necessário remover a opção de splash da inicialização para que o boot fique limpo e em modo texto:Abra o arquivo de configuração do GRUB:bashsudo nano /etc/default/grub
