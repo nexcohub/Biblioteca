@@ -1,0 +1,42 @@
+Modo passo a passo do artigo:
+
+https://wiki.archlinux.org/index.php/Silent_boot_(Português)
+
+Esse tópico é só um help pra um brodi meu q n consegue entender a linguagem da wiki (normal, já passei por isso).
+Silenciar o grub
+
+1. Abra com o seu editor de texto o arquivo de configuração do grub:
+
+    sudo nano /etc/default/grub
+
+2. Nas linhas GRUB_DEFAULT e GRUB_TIMEOUT deixe o valor como 0:
+
+    GRUB_DEFAULT=“0”
+    GRUB_TIMEOUT=“0”
+
+3. Embaixo delas adicione a seguinte linha:
+
+    GRUB_RECORDFAIL_TIMEOUT=$GRUB_HIDDEN_TIMEOUT
+
+4. Na linha GRUB_CMDLINE_LINUX_DEFAULT adicione:
+
+    quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log_priority=3 vt.global_cursor_default=0 vga=current
+
+Ficando:
+
+    GRUB_CMDLINE_LINUX_DEFAULT=(quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log_priority=3 vt.global_cursor_default=0 vga=current)
+
+5. Na linha GRUB_TIMEOUT_STYLE, mude o valor para hidden:
+
+    GRUB_TIMEOUT_STYLE=“hidden”
+
+6. Embaixo dela adicione a seguinte linha:
+
+    GRUB_HIDDEN_TIMEOUT=3
+
+Se você precisar acessar o grub, é só apertar ESC
+(mas vai ter 3 segundos para fazer isso entre a tela de boot e o sistema iniciar, caso quiser mais tempo, aumente o tempo em GRUB_HIDDEN_TIMEOUT)
+
+7. Salve o arquivo e depois rode o seguinte comando:
+
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
