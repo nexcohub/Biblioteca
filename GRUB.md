@@ -12,3 +12,8 @@ Para alterar o tempo de espera do GRUB no Arch Linux, edite o arquivo de configu
 <p>curl -fsSL https://christitus.com/linux | sh</p>
 <p>sudo nano /etc/mkinitcpio.conf
 
+
+
+
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+
